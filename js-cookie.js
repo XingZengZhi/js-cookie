@@ -17,3 +17,24 @@
         }
         return cookieValue;
     }
+
+/**
+     *    url参数获取
+     *
+     * @author XingZengZhi
+     * @date 2018/7/10 12:37
+     * @param
+     * @return
+     */
+    function getValueUrlSearch(propName){
+        var searchs = location.search.substring(1, location.search.length),
+            andArray = searchs.split('&'),
+            equalArray = null;
+        for(var i = 0, len = andArray.length;i < len;i++){
+            var v = andArray[i].split('=');
+            if(propName == v[0]){
+                return v[1];
+            }
+        }
+        return '';
+    }
