@@ -62,3 +62,30 @@
         var days = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日'];
         return days[day];
     }
+
+    /**  
+     *    返回浏览器当前缩放的比例
+     *   
+     * @author XingZengZhi  
+     * @date 2018/8/15 12:41  
+     * @param   
+     * @return   
+     */
+    function detectZoom (){
+        var ratio = 0,
+            screen = window.screen,
+            ua = navigator.userAgent.toLowerCase();
+        if (window.devicePixelRatio !== undefined) {
+            ratio = window.devicePixelRatio;
+        } else if (~ua.indexOf('msie')) {
+            if (screen.deviceXDPI && screen.logicalXDPI) {
+                ratio = screen.deviceXDPI / screen.logicalXDPI;
+            }
+        } else if (window.outerWidth !== undefined && window.innerWidth !== undefined) {
+            ratio = window.outerWidth / window.innerWidth;
+        }
+        if (ratio){
+            ratio = Math.round(ratio * 100);
+        }
+        return ratio;
+    }
